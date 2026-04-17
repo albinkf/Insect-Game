@@ -5,6 +5,8 @@ const gameContainer = document.getElementById('game-container');
 const timeEl = document.getElementById('time');
 const scoreEl = document.getElementById('score');
 const message = document.getElementById('message');
+const soundEffect = new Audio('hit.wav')
+
 
 let seconds = 0;
 let score = 0;
@@ -21,6 +23,7 @@ chooseInsectBtns.forEach(btn => {
         screens[1].classList.add('up');
         setTimeout(createInsect, 1000);
         startGame();
+        
     });
 });
 
@@ -62,19 +65,25 @@ function catchInsect() {
     increaseScore();
     this.classList.add('caught');
     setTimeout(() => this.remove(), 2000);
+    playSound();
     addInsects();
 }
 
 function addInsects() {
     setTimeout(createInsect, 1000);
     setTimeout(createInsect, 1500);
+    stopSounds();
 }
 
 function increaseScore() {
     score++;
 
-    if (score > 19) {
+    if (score > 25) {
         message.classList.add('visible');
     }
     scoreEl.innerHTML = `Score: ${score}`;
+}
+
+function playSound() {
+    soundEffect.play();
 }

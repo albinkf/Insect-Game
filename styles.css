@@ -132,7 +132,7 @@ h1 {
 /* After the closing h5, temporarily add a div with a class of insect containing an image (the fly) so we can see it to style it */
 
 .insect {
-  cursor: pointer;
+  cursor: grab;
   display: flex;
   align-items: center;
   justify-content: center;
